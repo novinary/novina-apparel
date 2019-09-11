@@ -4,18 +4,17 @@ import './App.css';
 
 import HomePage from './pages-components/homepage/homepage.component';
 import ShopPage from './pages-components/shop/shop.component';
-const HatsPage = () => (
-  <div>
-    <h1>THIS IS HATS PAGE</h1>
-  </div>
-);
+import Header from './reuseable-components/header/header.component';
 
 function App() {
   return (
-    <Switch>
-      <Route exact path='/' component={HomePage} />
-      <Route path='/shop' component={ShopPage} />
-    </Switch>
+    <div>
+      <Header />
+      <Switch>
+        <Route exact path='/' component={HomePage} />
+        <Route path='/shop' component={ShopPage} />
+      </Switch>
+    </div>
   );
 }
 
