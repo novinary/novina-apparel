@@ -2,7 +2,7 @@ import React from 'react';
 import FormInput from '../../reuseable-components/form-input/form-input.component';
 import './sign-in.styles.scss';
 import CustomButton from '../../reuseable-components/custom-button/custom-button.component';
-import { signInWithGoogle } from '../../firebase/firebase.utils';
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -14,12 +14,19 @@ class SignIn extends React.Component {
     };
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     // prevent the default submit action from firing because we want full control over exactly what
     // this submit is going to do
     event.preventDefault();
-    // only clear out our fields for now
-    this.setState({ email: '', password: '' });
+
+    const { email, password } = this.state;
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({ email: '', password: '' });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   handleChange = event => {
