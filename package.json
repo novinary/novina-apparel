@@ -2,6 +2,9 @@
   "name": "novina-apparel",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "12.8.1"
+  },
   "dependencies": {
     "firebase": "^6.6.0",
     "node-sass": "^4.12.0",
